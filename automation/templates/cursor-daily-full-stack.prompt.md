@@ -21,10 +21,14 @@ Read `AGENTS.md` first and follow it exactly.
 
 Same as `AGENTS.md`: no unrelated edits, no new dependencies, tests must pass.
 
+## Git author
+
+Run `node scripts/configure-git-author.js` before commit. Author **gajay** only. No `Co-authored-by` or Cursor attribution.
+
 ## Git delivery
 
-- Branch: `cursor/daily-YYYY-MM-DD-<slug>`
-- Commit: `feat(daily): implement YYYY-MM-DD <slug>`
+- Branch: `daily/YYYY-MM-DD-<slug>`
+- Commit: `feat(daily): implement YYYY-MM-DD <slug>` (no co-authors)
 - If `npm run daily` created scaffold-only files and you also implemented, one commit is fine; if scaffold was already on main from a bot, only commit your solution.
 - Open PR to `main` with title `Daily: YYYY-MM-DD — <title>` and test evidence.
 

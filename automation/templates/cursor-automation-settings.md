@@ -54,8 +54,10 @@ Use a capable coding model (e.g. Composer / Claude Sonnet class). Daily single-p
 
 | Account type | Effect |
 |--------------|--------|
-| **Me** | PRs under your GitHub user; billed to you |
-| **Service account** (teams) | PRs as `cursor`; team billing |
+| **Me** (required for gajay identity) | PRs and commits under **your** GitHub user |
+| ~~Service account~~ | Avoid — PRs show as `cursor` bot |
+
+Use **Run as: Me** so nothing is attributed to Cursor or `cursor` on GitHub.
 
 ## 8. Prompt
 

@@ -17,6 +17,20 @@ This repo is a **daily DSA practice** project. Automations and agents should fol
 | `npm run test:ci` | Run tests only for **implemented** solutions (CI behavior) |
 | `node --test problems/<folder>/*.test.js` | Run one problem only |
 
+## Git author (required)
+
+All commits must appear as **gajay** only — not Cursor, not bots, no co-authors.
+
+Before every commit:
+
+```bash
+node scripts/configure-git-author.js
+```
+
+Identity is defined in `automation/git-identity.json` (override with `GIT_AUTHOR_NAME` / `GIT_AUTHOR_EMAIL`).
+
+**Never** add `Co-authored-by`, `Signed-off-by` for tools, or "Cursor" / "cursor bot" in commit messages, PR titles, or PR bodies. Use plain commit messages only.
+
 ## Daily automation workflow
 
 1. `git pull origin main`
@@ -24,8 +38,8 @@ This repo is a **daily DSA practice** project. Automations and agents should fol
 3. `npm run today` — locate `problems/YYYY-MM-DD-<slug>/`
 4. Edit **`solution.js`** only (unless tests are wrong). Remove `throw new Error("Not implemented")`.
 5. Run tests for **that folder** until green, then `npm run test:ci`.
-6. Commit with: `feat(daily): implement YYYY-MM-DD <slug>`
-7. Open a PR to `main` (preferred) or push per automation prompt.
+6. `node scripts/configure-git-author.js`, then commit: `feat(daily): implement YYYY-MM-DD <slug>` (no co-author trailers).
+7. Open a PR to `main` as **gajay** (Run automation as **Me**, not service account / `cursor` bot).
 
 ## Do not
 

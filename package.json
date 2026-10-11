@@ -10,7 +10,8 @@
     "test:watch": "node --test --watch \"problems/**/*.test.js\"",
     "new-day": "node scripts/new-day.js",
     "daily": "node scripts/daily.js",
-    "today": "node scripts/today.js"
+    "today": "node scripts/today.js",
+    "git:author": "node scripts/configure-git-author.js"
   },
   "engines": {
     "node": ">=20.0.0"

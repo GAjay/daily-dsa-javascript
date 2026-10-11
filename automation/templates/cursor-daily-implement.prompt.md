@@ -34,9 +34,16 @@ Read `AGENTS.md` first and follow it exactly.
 - No weakening or deleting tests.
 - If stuck after reasonable debugging, stop with a clear failure summary — **do not** open an empty PR.
 
+## Git author (required)
+
+- Run `node scripts/configure-git-author.js` before committing.
+- Author must be **gajay** only (`automation/git-identity.json`).
+- **Do not** add `Co-authored-by`, Cursor, cursor bot, or any co-author lines to commits or PRs.
+- Commit message body: plain text only — no tool attribution.
+
 ## Git delivery (required)
 
-- Branch name: `cursor/daily-YYYY-MM-DD-<slug>` (UTC date and slug from `npm run today`).
+- Branch name: `daily/YYYY-MM-DD-<slug>` (UTC date and slug from `npm run today`).
 - Commit message: `feat(daily): implement YYYY-MM-DD <slug>`
 - Push the branch to `origin`.
 - **Open a pull request** against `main`.
