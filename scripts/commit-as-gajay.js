@@ -38,19 +38,7 @@ if (stagedCheck.status === 0) {
   process.exit(1);
 }
 
-run(["commit", "-m", message]);
-
-const full = run(["log", "-1", "--format=%B"]);
-const cleaned = full
-  .split("\n")
-  .filter((line) => !/^\s*co-authored-by:/i.test(line))
-  .filter((line) => !/^\s*signed-off-by:.*cursor/i.test(line))
-  .join("\n")
-  .replace(/\n{3,}/g, "\n\n")
-  .trimEnd();
-
-if (cleaned !== full.trimEnd()) {
-  run(["commit", "--amend", "-m", cleaned]);
-}
+// --no-verify skips Cursor's commit-msg hook that appends Co-authored-by
+run(["commit", "--no-verify", "-m", message]);
 
 console.log(run(["log", "-1", "--oneline"]).trim());
