@@ -11,7 +11,8 @@
     "new-day": "node scripts/new-day.js",
     "daily": "node scripts/daily.js",
     "today": "node scripts/today.js",
-    "git:author": "node scripts/configure-git-author.js"
+    "git:author": "node scripts/configure-git-author.js",
+    "commit": "node scripts/commit-as-gajay.js"
   },
   "engines": {
     "node": ">=20.0.0"

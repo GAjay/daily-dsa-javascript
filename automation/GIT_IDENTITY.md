@@ -18,8 +18,11 @@ Use the same email as your GitHub account so commits link to your profile.
 ## Before each commit (agents & local)
 
 ```bash
-npm run git:author
+git add <files>
+npm run commit -- "your subject line"
 ```
+
+`npm run commit` sets author to gajay and **removes** any `Co-authored-by` trailers.
 
 ## GitHub Actions
 

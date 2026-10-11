@@ -36,7 +36,7 @@ Read `AGENTS.md` first and follow it exactly.
 
 ## Git author (required)
 
-- Run `node scripts/configure-git-author.js` before committing.
+- Commit with `npm run commit -- "feat(daily): implement YYYY-MM-DD <slug>"` after `git add` (never plain `git commit`).
 - Author must be **gajay** only (`automation/git-identity.json`).
 - **Do not** add `Co-authored-by`, Cursor, cursor bot, or any co-author lines to commits or PRs.
 - Commit message body: plain text only — no tool attribution.

@@ -38,7 +38,7 @@ Identity is defined in `automation/git-identity.json` (override with `GIT_AUTHOR
 3. `npm run today` — locate `problems/YYYY-MM-DD-<slug>/`
 4. Edit **`solution.js`** only (unless tests are wrong). Remove `throw new Error("Not implemented")`.
 5. Run tests for **that folder** until green, then `npm run test:ci`.
-6. `node scripts/configure-git-author.js`, then commit: `feat(daily): implement YYYY-MM-DD <slug>` (no co-author trailers).
+6. Commit with: `npm run commit -- "feat(daily): implement YYYY-MM-DD <slug>"` (strips any `Co-authored-by` lines).
 7. Open a PR to `main` as **gajay** (Run automation as **Me**, not service account / `cursor` bot).
 
 ## Do not
