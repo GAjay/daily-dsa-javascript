@@ -1,0 +1,15 @@
+{
+  "name": "daily-dsa-javascript",
+  "version": "1.0.0",
+  "description": "Daily data structures and algorithms practice in JavaScript",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test \"problems/**/*.test.js\"",
+    "test:watch": "node --test --watch \"problems/**/*.test.js\"",
+    "new-day": "node scripts/new-day.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

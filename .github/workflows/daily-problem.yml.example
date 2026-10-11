@@ -1,0 +1,54 @@
+# Rename to daily-problem.yml after connecting GitHub.
+# Creates a scaffold folder each day at 06:00 UTC (customize cron).
+#
+# For a real daily *solution*, use a Cursor Automation or scheduled agent
+# to implement solution.js and push; this workflow only scaffolds.
+
+name: Daily DSA scaffold
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pick problem slug from rotation
+        id: pick
+        run: |
+          SLUGS="valid-parentheses merge-two-sorted-lists max-subarray binary-search climb-stairs"
+          DAY=$(date -u +%j)
+          IDX=$((10#$DAY % 5))
+          set -- $SLUGS
+          n=0
+          for s; do
+            if [ "$n" -eq "$IDX" ]; then echo "slug=$s" >> "$GITHUB_OUTPUT"; break; fi
+            n=$((n + 1))
+          done
+
+      - name: Create problem folder if missing
+        run: |
+          npm run new-day -- "${{ steps.pick.outputs.slug }}" || true
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add problems/
+          if git diff --staged --quiet; then
+            echo "Nothing new to commit"
+            exit 0
+          fi
+          git commit -m "dsa: scaffold $(date -u +%F) ${{ steps.pick.outputs.slug }}"
+          git push
