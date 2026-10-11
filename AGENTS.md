@@ -2,6 +2,8 @@
 
 This repo is a **daily DSA practice** project. Automations and agents should follow these rules.
 
+**Cursor rules (always on):** `.cursor/rules/ponytail.mdc` (minimal diffs), `.cursor/rules/no-coauthor-gajay-only.mdc` (gajay commits, no co-authors).
+
 ## Environment
 
 - **Node.js 20+** (no `npm install` — zero dependencies).
