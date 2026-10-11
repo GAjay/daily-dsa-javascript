@@ -50,9 +50,11 @@ Then edit `README.md`, implement `solution.js`, and run `npm test`.
 3. Run `npm test` until green.
 4. Commit with a message like `dsa: 2026-10-11 two sum`.
 
-## Automation (daily scaffold)
+## Automation (daily scaffold + Cursor)
 
-See **[automation/README.md](automation/README.md)** for full details.
+**Start here:** **[automation/SETUP.md](automation/SETUP.md)** — GitHub Actions + Cursor Automation prompt template + Cloud Environment.
+
+See also [automation/README.md](automation/README.md).
 
 ```bash
 npm run daily              # today's problem from catalog (idempotent)

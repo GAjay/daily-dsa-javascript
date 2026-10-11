@@ -34,7 +34,7 @@ npm run new-day -- valid-parentheses
 | Workflow | Purpose |
 |----------|---------|
 | **`daily-dsa.yml`** | Cron + manual dispatch: runs `npm run daily`, commits `problems/` + `state.json` |
-| **`ci.yml`** | Runs `npm test` on push/PR |
+| **`ci.yml`** | Runs `npm run test:ci` on push/PR |
 
 ### Enable on GitHub
 
@@ -58,10 +58,18 @@ Add an object to `catalog.json` → `problems`:
 
 No code changes required — the next `npm run daily` picks it up when its turn arrives.
 
-## Optional: Cursor Cloud Agent
+## Cursor Automation (implement + PR)
 
-For **implemented solutions** (not just scaffolds), schedule a Cursor Automation or a timer follow-up with a prompt like:
+**Full checklist:** [SETUP.md](SETUP.md)
 
-> Run `npm run daily`, implement today's `solution.js` until `npm test` passes, commit and push.
+**Copy-paste prompt:** [templates/cursor-daily-implement.prompt.md](templates/cursor-daily-implement.prompt.md)
 
-Scaffold automation stays in GitHub Actions; solving stays in the agent or you.
+**UI settings:** [templates/cursor-automation-settings.md](templates/cursor-automation-settings.md)
+
+Helper for agents:
+
+```bash
+npm run today   # JSON: path, slug, testCommand, implemented
+```
+
+Recommended schedule: GitHub **06:00 UTC** scaffold → Cursor **07:00 UTC** implement.
