@@ -17,19 +17,18 @@ This repo is a **daily DSA practice** project. Automations and agents should fol
 | `npm run test:ci` | Run tests only for **implemented** solutions (CI behavior) |
 | `node --test problems/<folder>/*.test.js` | Run one problem only |
 
-## Git author (required)
+## Git author (required — see `.cursor/rules/no-coauthor-gajay-only.mdc`)
 
-All commits must appear as **gajay** only — not Cursor, not bots, no co-authors.
-
-Before every commit:
+All commits must appear as **gajay** only — **no co-authors, ever**.
 
 ```bash
-node scripts/configure-git-author.js
+git add <files>
+npm run commit -- "your subject"
 ```
 
-Identity is defined in `automation/git-identity.json` (override with `GIT_AUTHOR_NAME` / `GIT_AUTHOR_EMAIL`).
+Do **not** use `git commit` directly (Cursor hooks add `Co-authored-by`).
 
-**Never** add `Co-authored-by`, `Signed-off-by` for tools, or "Cursor" / "cursor bot" in commit messages, PR titles, or PR bodies. Use plain commit messages only.
+Identity: `automation/git-identity.json`. Full policy: `automation/GIT_IDENTITY.md`.
 
 ## Daily automation workflow
 

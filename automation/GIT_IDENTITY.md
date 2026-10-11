@@ -1,5 +1,7 @@
 # Git identity — gajay only
 
+**Cursor rule (always on):** `.cursor/rules/no-coauthor-gajay-only.mdc`
+
 All automated and agent commits should show **gajay**, not Cursor, GitHub Actions bot, or co-authors.
 
 ## Configure once

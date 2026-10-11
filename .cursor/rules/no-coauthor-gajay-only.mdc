@@ -1,0 +1,33 @@
+---
+description: Git commits and PRs must be gajay only — never add Co-authored-by or Cursor/bot attribution
+alwaysApply: true
+---
+
+# No co-author — gajay only
+
+## Commits
+
+- **Never** run plain `git commit`. Always:
+  ```bash
+  git add <files>
+  npm run commit -- "subject line"
+  ```
+- `npm run commit` sets author from `automation/git-identity.json` (**gajay**) and uses `--no-verify` so platform hooks cannot append trailers.
+
+## Forbidden in git and PRs
+
+- Do **not** add `Co-authored-by:` (any name or email).
+- Do **not** add `Signed-off-by:` for tools, Cursor, bots, or agents.
+- Do **not** mention "Cursor", "cursor bot", or "Co-authored-by" in commit messages, PR titles, or PR bodies.
+- Do **not** use branch prefixes like `cursor/`; use `daily/YYYY-MM-DD-slug`.
+
+## Author identity
+
+- Run `npm run git:author` or rely on `npm run commit` (both configure gajay).
+- GitHub Actions / agents: use `node scripts/configure-git-author.js` then `git commit --no-verify`.
+
+## Automations
+
+- Cursor Automation: **Run as Me**, not service account (avoids `cursor` bot on PRs).
+
+See `automation/GIT_IDENTITY.md`.
