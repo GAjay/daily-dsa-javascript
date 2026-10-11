@@ -28,7 +28,7 @@ jobs:
 
       - name: Commit and push
         env:
-          GIT_AUTHOR_NAME: gajay
+          GIT_AUTHOR_NAME: Gajay
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
         run: |
           if [ -z "$GIT_AUTHOR_EMAIL" ]; then
