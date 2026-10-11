@@ -43,5 +43,5 @@ jobs:
             exit 0
           fi
           DATE=$(date -u +%F)
-          git commit -m "dsa(auto): scaffold ${DATE}"
-          git push
+          git commit --no-verify -m "dsa(auto): scaffold ${DATE}"
+          git push origin HEAD

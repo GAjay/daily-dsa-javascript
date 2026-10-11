@@ -10,6 +10,7 @@
     "test:watch": "node --test --watch \"problems/**/*.test.js\"",
     "new-day": "node scripts/new-day.js",
     "daily": "node scripts/daily.js",
+    "daily:commit": "node scripts/daily-and-commit.js",
     "today": "node scripts/today.js",
     "git:author": "node scripts/configure-git-author.js",
     "commit": "node scripts/commit-as-gajay.js"

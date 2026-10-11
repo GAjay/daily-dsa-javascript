@@ -1,0 +1,7 @@
+Daily DSA implement run (scheduled).
+
+Read AGENTS.md and automation/templates/cursor-daily-implement.prompt.md (section below ---).
+
+Execute the full workflow: pull main, npm run daily, npm run today, implement today's solution.js until tests pass, npm run test:ci, npm run commit after git add, push branch daily/YYYY-MM-DD-slug, open PR to main as gajay only (no co-authors, no Cursor attribution).
+
+If today's problem is already implemented and tests pass, reply "No changes needed" and stop.
