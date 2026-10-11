@@ -7,7 +7,8 @@ End-to-end checklist: **GitHub scaffold + Cursor implement + CI**. Estimated man
 | Layer | What runs | Result |
 |-------|-----------|--------|
 | **GitHub Actions** | `daily-dsa.yml` @ 06:00 UTC | New `problems/YYYY-MM-DD-slug/` + updated `state.json` on `main` |
-| **Cursor Automation** | Your schedule @ 07:00 UTC | Implements `solution.js`, opens PR |
+| **Cursor timers** (this agent) | `daily-dsa-scaffold-utc` @ 06:00, `daily-dsa-implement-utc` @ 07:00 | Scaffold commit + daily implement (see [DAILY_TRIGGERS.md](DAILY_TRIGGERS.md)) |
+| **Cursor Automation** (optional) | Your schedule @ 07:00 UTC | Same implement flow when this chat is closed |
 | **GitHub Actions CI** | `ci.yml` on push/PR | Tests all **implemented** problems |
 
 ---
