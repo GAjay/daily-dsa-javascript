@@ -32,10 +32,8 @@ function run(args) {
   return r.stdout;
 }
 
-const staged = run(["diff", "--cached", "--quiet"]);
-// diff --cached --quiet exits 1 if there are staged changes
-const status = spawnSync("git", ["diff", "--cached", "--quiet"]);
-if (status.status === 0) {
+const stagedCheck = spawnSync("git", ["diff", "--cached", "--quiet"]);
+if (stagedCheck.status === 0) {
   console.error("Nothing staged. Run git add first.");
   process.exit(1);
 }
