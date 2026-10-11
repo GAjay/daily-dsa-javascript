@@ -22,7 +22,7 @@ git add <files>
 npm run commit -- "your subject line"
 ```
 
-`npm run commit` sets author to gajay and **removes** any `Co-authored-by` trailers.
+`npm run commit` sets author to gajay and uses `--no-verify` so Cursor does not append `Co-authored-by` hooks.
 
 ## GitHub Actions
 
