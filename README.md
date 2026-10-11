@@ -50,15 +50,20 @@ Then edit `README.md`, implement `solution.js`, and run `npm test`.
 3. Run `npm test` until green.
 4. Commit with a message like `dsa: 2026-10-11 two sum`.
 
-## Automate daily problems (optional)
+## Automation (daily scaffold)
 
-To push a new problem every day on GitHub:
+See **[automation/README.md](automation/README.md)** for full details.
 
-1. Create a GitHub repo and connect this project (or add `origin` pointing at your repo).
-2. Enable GitHub Actions on the repo.
-3. Use a scheduled workflow (see `.github/workflows/daily-problem.yml.example`) that runs `npm run new-day` and opens a commit—or run a Cloud Agent / cron with the same commands.
+```bash
+npm run daily              # today's problem from catalog (idempotent)
+npm run daily -- --dry-run # preview next slug
+```
 
-You still review and implement solutions; automation only scaffolds the folder and keeps the streak.
+**GitHub:** `.github/workflows/daily-dsa.yml` runs on a cron (06:00 UTC) and commits the new folder + `automation/state.json`. `.github/workflows/ci.yml` runs `npm run test:ci` (only **implemented** solutions—scaffolds do not fail CI).
+
+1. Create/link your GitHub repo and push `main`.
+2. Enable Actions → run **Daily DSA** once manually to verify.
+3. Implement each day's `solution.js`; use `npm test` locally (all problems, including drafts).
 
 ## License
 

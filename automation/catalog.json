@@ -1,0 +1,128 @@
+{
+  "problems": [
+    {
+      "slug": "valid-parentheses",
+      "title": "Valid Parentheses",
+      "functionName": "isValid",
+      "readme": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.\n\nAn input string is valid if:\n\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.",
+      "examples": "Input: s = \"()\"\nOutput: true\n\nInput: s = \"()[]{}\"\nOutput: true\n\nInput: s = \"(]\"\nOutput: false",
+      "constraints": "- `1 <= s.length <= 10^4`\n- `s` consists of parentheses only `'()[]{}'`.",
+      "signature": "/**\n * @param {string} s\n * @returns {boolean}\n */",
+      "params": "s",
+      "tests": [
+        { "name": "simple pair", "args": ["()"], "expected": true },
+        { "name": "multiple types", "args": ["()[]{}"], "expected": true },
+        { "name": "wrong close", "args": ["(]"], "expected": false },
+        { "name": "nested", "args": ["([{}])"], "expected": true }
+      ]
+    },
+    {
+      "slug": "contains-duplicate",
+      "title": "Contains Duplicate",
+      "functionName": "containsDuplicate",
+      "readme": "Given an integer array `nums`, return `true` if any value appears **at least twice** in the array, and return `false` if every element is distinct.",
+      "examples": "Input: nums = [1, 2, 3, 1]\nOutput: true\n\nInput: nums = [1, 2, 3, 4]\nOutput: false",
+      "constraints": "- `1 <= nums.length <= 10^5`\n- `-10^9 <= nums[i] <= 10^9`",
+      "signature": "/**\n * @param {number[]} nums\n * @returns {boolean}\n */",
+      "params": "nums",
+      "tests": [
+        { "name": "has duplicate", "args": [[1, 2, 3, 1]], "expected": true },
+        { "name": "all unique", "args": [[1, 2, 3, 4]], "expected": false },
+        { "name": "duplicate at end", "args": [[1, 1]], "expected": true }
+      ]
+    },
+    {
+      "slug": "max-subarray",
+      "title": "Maximum Subarray",
+      "functionName": "maxSubArray",
+      "readme": "Given an integer array `nums`, find the subarray with the largest sum, and return its sum.",
+      "examples": "Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]\nOutput: 6\nExplanation: [4, -1, 2, 1] has sum 6.",
+      "constraints": "- `1 <= nums.length <= 10^5`\n- `-10^4 <= nums[i] <= 10^4`",
+      "signature": "/**\n * @param {number[]} nums\n * @returns {number}\n */",
+      "params": "nums",
+      "tests": [
+        { "name": "classic kadane", "args": [[-2, 1, -3, 4, -1, 2, 1, -5, 4]], "expected": 6 },
+        { "name": "single element", "args": [[1]], "expected": 1 },
+        { "name": "all negative pick max", "args": [[-2, -1]], "expected": -1 }
+      ]
+    },
+    {
+      "slug": "binary-search",
+      "title": "Binary Search",
+      "functionName": "search",
+      "readme": "Given a sorted array of integers `nums` and an integer `target`, return the index of `target` in `nums`, or `-1` if it is not present.\n\nYou must write an algorithm with `O(log n)` runtime complexity.",
+      "examples": "Input: nums = [-1, 0, 3, 5, 9, 12], target = 9\nOutput: 4\n\nInput: nums = [-1, 0, 3, 5, 9, 12], target = 2\nOutput: -1",
+      "constraints": "- `1 <= nums.length <= 10^4`\n- `-10^4 <= nums[i], target <= 10^4`\n- All integers in `nums` are unique.\n- `nums` is sorted ascending.",
+      "signature": "/**\n * @param {number[]} nums\n * @param {number} target\n * @returns {number}\n */",
+      "params": "nums, target",
+      "tests": [
+        { "name": "found", "args": [[-1, 0, 3, 5, 9, 12], 9], "expected": 4 },
+        { "name": "not found", "args": [[-1, 0, 3, 5, 9, 12], 2], "expected": -1 },
+        { "name": "single hit", "args": [[5], 5], "expected": 0 }
+      ]
+    },
+    {
+      "slug": "climb-stairs",
+      "title": "Climbing Stairs",
+      "functionName": "climbStairs",
+      "readme": "You are climbing a staircase. It takes `n` steps to reach the top.\n\nEach time you can climb `1` or `2` steps. In how many distinct ways can you climb to the top?",
+      "examples": "Input: n = 2\nOutput: 2\n\nInput: n = 3\nOutput: 3",
+      "constraints": "- `1 <= n <= 45`",
+      "signature": "/**\n * @param {number} n\n * @returns {number}\n */",
+      "params": "n",
+      "tests": [
+        { "name": "two steps", "args": [2], "expected": 2 },
+        { "name": "three steps", "args": [3], "expected": 3 },
+        { "name": "one step", "args": [1], "expected": 1 }
+      ]
+    },
+    {
+      "slug": "best-time-to-buy-sell-stock",
+      "title": "Best Time to Buy and Sell Stock",
+      "functionName": "maxProfit",
+      "readme": "You are given an array `prices` where `prices[i]` is the price of a stock on day `i`.\n\nYou want to maximize profit by choosing **one day to buy** and **a different day in the future to sell**.\n\nReturn the maximum profit. If you cannot achieve any profit, return `0`.",
+      "examples": "Input: prices = [7, 1, 5, 3, 6, 4]\nOutput: 5\n\nInput: prices = [7, 6, 4, 3, 1]\nOutput: 0",
+      "constraints": "- `1 <= prices.length <= 10^5`\n- `0 <= prices[i] <= 10^4`",
+      "signature": "/**\n * @param {number[]} prices\n * @returns {number}\n */",
+      "params": "prices",
+      "tests": [
+        { "name": "normal profit", "args": [[7, 1, 5, 3, 6, 4]], "expected": 5 },
+        { "name": "decreasing", "args": [[7, 6, 4, 3, 1]], "expected": 0 },
+        { "name": "two days", "args": [[1, 2]], "expected": 1 }
+      ]
+    },
+    {
+      "slug": "reverse-string",
+      "title": "Reverse String",
+      "functionName": "reverseString",
+      "readme": "Write a function that reverses a string. The input string is given as an array of characters `s`. You must do this **in-place** with `O(1)` extra memory.",
+      "examples": "Input: s = [\"h\",\"e\",\"l\",\"l\",\"o\"]\nOutput: [\"o\",\"l\",\"l\",\"e\",\"h\"]",
+      "constraints": "- `1 <= s.length <= 10^5`\n- `s[i]` is a printable ascii character.",
+      "signature": "/**\n * @param {string[]} s\n * @returns {void}\n */",
+      "params": "s",
+      "tests": [
+        { "name": "hello", "args": [["h", "e", "l", "l", "o"]], "expected": ["o", "l", "l", "e", "h"], "inPlace": true },
+        { "name": "odd length", "args": [["a", "b", "c"]], "expected": ["c", "b", "a"], "inPlace": true }
+      ]
+    },
+    {
+      "slug": "merge-sorted-array",
+      "title": "Merge Sorted Array",
+      "functionName": "merge",
+      "readme": "You are given two integer arrays `nums1` and `nums2`, sorted in **non-decreasing order**, and two integers `m` and `n`, the number of elements in `nums1` and `nums2` respectively.\n\nMerge `nums2` into `nums1` as one sorted array **in-place**. The first `m` elements of `nums1` are the mergeable values; the last `n` elements of `nums1` are `0` placeholders. The length of `nums1` is `m + n`.",
+      "examples": "Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3\nOutput: [1,2,2,3,5,6]",
+      "constraints": "- `nums1.length == m + n`\n- `nums2.length == n`",
+      "signature": "/**\n * @param {number[]} nums1\n * @param {number} m\n * @param {number[]} nums2\n * @param {number} n\n * @returns {void}\n */",
+      "params": "nums1, m, nums2, n",
+      "tests": [
+        {
+          "name": "standard merge",
+          "args": [[1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3],
+          "expected": [1, 2, 2, 3, 5, 6],
+          "inPlace": true,
+          "argIndex": 0
+        }
+      ]
+    }
+  ]
+}

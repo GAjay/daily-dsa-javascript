@@ -1,0 +1,40 @@
+name: Daily DSA
+
+on:
+  schedule:
+    # 06:00 UTC every day — adjust to your timezone
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-dsa
+  cancel-in-progress: false
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Scaffold today's problem
+        run: npm run daily
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add problems/ automation/state.json
+          if git diff --staged --quiet; then
+            echo "Nothing new to commit (already scaffolded for today)"
+            exit 0
+          fi
+          DATE=$(date -u +%F)
+          git commit -m "dsa(auto): scaffold ${DATE}"
+          git push

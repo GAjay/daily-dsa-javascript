@@ -6,8 +6,10 @@
   "private": true,
   "scripts": {
     "test": "node --test \"problems/**/*.test.js\"",
+    "test:ci": "node scripts/test-implemented.js",
     "test:watch": "node --test --watch \"problems/**/*.test.js\"",
-    "new-day": "node scripts/new-day.js"
+    "new-day": "node scripts/new-day.js",
+    "daily": "node scripts/daily.js"
   },
   "engines": {
     "node": ">=20.0.0"

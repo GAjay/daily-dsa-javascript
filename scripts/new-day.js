@@ -2,10 +2,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createProblemFolder } from "./lib/create-problem.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const problemsDir = path.join(root, "problems");
+const catalogPath = path.join(root, "automation", "catalog.json");
 
 const slugArg = process.argv[2];
 if (!slugArg || slugArg.startsWith("-")) {
@@ -20,71 +22,28 @@ const slug = slugArg
   .replace(/^-|-$/g, "");
 
 const date = new Date().toISOString().slice(0, 10);
-const folderName = `${date}-${slug}`;
-const problemDir = path.join(problemsDir, folderName);
 
-if (fs.existsSync(problemDir)) {
-  console.error(`Already exists: problems/${folderName}`);
+let entry = { slug, functionName: slugToCamel(slug), params: "input" };
+
+if (fs.existsSync(catalogPath)) {
+  const catalog = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
+  const fromCatalog = catalog.problems?.find((p) => p.slug === slug);
+  if (fromCatalog) entry = fromCatalog;
+}
+
+const result = createProblemFolder(problemsDir, date, entry);
+
+if (!result.created) {
+  console.error(`Already exists: problems/${result.folderName}`);
   process.exit(1);
 }
 
-const fnName = slug
-  .split("-")
-  .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
-  .join("");
+console.log(`Created problems/${result.folderName}/`);
+console.log("Next: edit README.md if needed, implement solution.js, run npm test");
 
-fs.mkdirSync(problemDir, { recursive: true });
-
-fs.writeFileSync(
-  path.join(problemDir, "README.md"),
-  `# ${slug.replace(/-/g, " ")}
-
-## Problem
-
-Describe the problem here.
-
-## Examples
-
-\`\`\`
-Input:
-Output:
-\`\`\`
-
-## Constraints
-
-- 
-
-## Notes
-
-Implement \`${fnName}\` in \`solution.js\`.
-`
-);
-
-fs.writeFileSync(
-  path.join(problemDir, "solution.js"),
-  `/**
- * @param {*} input
- * @returns {*}
- */
-export function ${fnName}(input) {
-  throw new Error("Not implemented");
+function slugToCamel(slug) {
+  return slug
+    .split("-")
+    .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
+    .join("");
 }
-`
-);
-
-fs.writeFileSync(
-  path.join(problemDir, `${slug}.test.js`),
-  `import { describe, it } from "node:test";
-import assert from "node:assert/strict";
-import { ${fnName} } from "./solution.js";
-
-describe("${fnName}", () => {
-  it("example case", () => {
-    assert.throws(() => ${fnName}(null), /Not implemented/);
-  });
-});
-`
-);
-
-console.log(`Created problems/${folderName}/`);
-console.log("Next: edit README.md, implement solution.js, run npm test");
