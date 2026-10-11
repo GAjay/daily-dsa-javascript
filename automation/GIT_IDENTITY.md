@@ -1,4 +1,4 @@
-# Git identity — gajay only
+# Git identity — Gajay only
 
 **Cursor rule (always on):** `.cursor/rules/no-coauthor-gajay-only.mdc`
 
@@ -10,8 +10,8 @@ Edit `automation/git-identity.json`:
 
 ```json
 {
-  "name": "gajay",
-  "email": "your-github-email@example.com"
+  "name": "Gajay",
+  "email": "6947656+GAjay@users.noreply.github.com"
 }
 ```
 
