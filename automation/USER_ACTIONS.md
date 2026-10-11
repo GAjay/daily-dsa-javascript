@@ -2,11 +2,11 @@
 
 The agent finished everything in the repository and started a Cloud Environment build. These steps require **your** Cursor/GitHub account in the browser.
 
-## 1. Create the GitHub repository
+## 1. GitHub repository
 
-In this Cursor agent chat, click **Create repo** (top of the thread) and choose a name such as `daily-dsa-javascript`.
+**Live repo:** https://github.com/GAjay/daily-dsa-javascript
 
-That links GitHub, pushes `main`, and enables Actions.
+If GitHub Actions workflows are missing, authorize **`workflow`** scope once (`gh auth refresh -h github.com -s workflow`) then from the project: `git push github main`.
 
 ## 2. Connect GitHub to Cursor (if not already)
 

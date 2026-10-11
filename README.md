@@ -2,6 +2,8 @@
 
 Practice data structures and algorithms in **modern JavaScript** (ES modules) with the built-in Node.js test runner—no Jest or Vitest required.
 
+**GitHub:** https://github.com/GAjay/daily-dsa-javascript
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/) **20+**
