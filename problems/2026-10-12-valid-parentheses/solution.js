@@ -3,5 +3,18 @@
  * @returns {boolean}
  */
 export function isValid(s) {
-  throw new Error("Not implemented");
+  const pairs = { ")": "(", "]": "[", "}": "{" };
+  const stack = [];
+
+  for (const ch of s) {
+    if (ch === "(" || ch === "[" || ch === "{") {
+      stack.push(ch);
+      continue;
+    }
+    if (ch === ")" || ch === "]" || ch === "}") {
+      if (stack.pop() !== pairs[ch]) return false;
+    }
+  }
+
+  return stack.length === 0;
 }
