@@ -3,5 +3,10 @@
  * @returns {boolean}
  */
 export function containsDuplicate(nums) {
-  throw new Error("Not implemented");
+  const seen = new Set();
+  for (const n of nums) {
+    if (seen.has(n)) return true;
+    seen.add(n);
+  }
+  return false;
 }
