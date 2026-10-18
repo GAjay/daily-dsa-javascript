@@ -12,4 +12,5 @@ export function reverseString(s) {
     left++;
     right--;
   }
+  throw new Error("Not implemented");
 }
