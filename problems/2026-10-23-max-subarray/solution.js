@@ -10,4 +10,5 @@ export function maxSubArray(nums) {
     best = Math.max(best, cur);
   }
   return best;
+
 }
