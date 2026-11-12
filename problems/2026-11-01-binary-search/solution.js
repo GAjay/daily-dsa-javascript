@@ -13,4 +13,5 @@ export function search(nums, target) {
     else hi = mid - 1;
   }
   return -1;
+
 }
